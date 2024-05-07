@@ -17,9 +17,8 @@ public class ServiceRepository {
 		this.em = em;
 	}
 
-	public List<Service> getAllServices() {
-		List<Service> services = this.em.createQuery("select service from Service service", Service.class)
-				.getResultList();
+	public List<Service> getAllServices(){
+		List<Service> services = this.em.createQuery("select service from Service service", Service.class).getResultList();
 		return services;
 	}
 }

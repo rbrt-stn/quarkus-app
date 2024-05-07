@@ -9,19 +9,10 @@ import com.nttdata.lil.quarkus.util.GreetingUtil;
 
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
+import jakarta.enterprise.context.control.ActivateRequestContext;
 
 @QuarkusMain
 public class QuarkusApp implements QuarkusApplication {
-
-//	GreetingUtil greetingUtil;
-//
-//	FizzBuzzExecutor fizzBuzzExecutor;
-//
-//	public QuarkusApp(GreetingUtil greetingUtil, FizzBuzzExecutor fizzBuzzExecutor){
-//		super();
-//		this.greetingUtil = greetingUtil;
-//		this.fizzBuzzExecutor = fizzBuzzExecutor;
-//	}
 
 	private final ServiceRepository serviceRepository;
 
@@ -30,9 +21,8 @@ public class QuarkusApp implements QuarkusApplication {
 	}
 
 	@Override
+	@ActivateRequestContext // or run transaction
 	public int run(String... args) throws Exception {
-//		System.out.println(this.greetingUtil.getGreetingName());
-//		fizzBuzzExecutor.execute();
 		List<Service> services = this.serviceRepository.getAllServices();
 		services.forEach(System.out::println);
 		return 0;
